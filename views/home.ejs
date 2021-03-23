@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Home</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="stylesheet" type="text/css" href="main.css">
+      <script type="text/javascript" src="sweetalert2.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+      <style type="text/css">
+         #admin, #user, #ladmin, #luser {
+         display: none;
+         } 
+         .actions {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         padding: 14px;
+         border-radius: 10px;
+         border:1px solid #D24335;
+         }
+         a {
+         margin:6px;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="container">
+         <h1>Welcome <span id="username"></span>!</h1>
+         <p style="color: #495450;">This is Home page!</p>
+         <div class="actions">
+            <h3>Actions:</h3>
+            <button class="btn" id="admin" onclick="toogleadmin()">Set as Admin!</button>
+            <a class="link" id="ladmin" href="/admin">Visit admin panel</a>
+            <button class="btn"  id="user" onclick="toogleuser()">Set as User!</button>
+            <a class="link" id="luser" href="/user">Visit User page</a>
+         </div>
+         <h2>Updates:</h2>
+         <p>You are now a <span id="role"></span> !</p>
+         <br>
+         <button class="btn"  onclick="signOut()">SignOut</button>
+      </div>
+   </body>
+   <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyDkB6cVahO5RWTdy7j_b8L47V8KFzQNPZ0",
+        authDomain: "abhiapp-33dbc.firebaseapp.com",
+        databaseURL: "https://abhiapp-33dbc-default-rtdb.firebaseio.com",
+        projectId: "abhiapp-33dbc",
+        storageBucket: "abhiapp-33dbc.appspot.com",
+        messagingSenderId: "502538835488",
+        appId: "1:502538835488:web:6c46e1b5e6356bc0968e45",
+        measurementId: "G-QZLL5VQKZ7"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+   </script>
+   <script type="text/javascript" src="main.js"></script>
+</html>

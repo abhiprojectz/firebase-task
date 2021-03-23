@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title></title>
+      <title>Antariskh task</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <style type="text/css">
+         @import url('https://fonts.googleapis.com/css2?family=Poppins');
+         body {
+         /*background-color: #232323;*/
+         font-family: 'Poppins', sans-serif;
+         }
+         ul, li {
+         list-style-type: none;
+         }
+         li {
+         border: 1px solid #D24335;
+         border-radius: 10px;
+         padding: 8px;
+         width: 90%;
+         margin-top: 20px;
+         cursor: pointer;
+         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+         }
+         .dim {
+         display: none;
+         background-color: #D24335;
+         color: #fff;
+         padding: 10px;
+         cursor: pointer;
+         border: 0;
+         border-radius: 8px;
+         font-weight: 700;
+         transition: 0.4s ease;
+         }
+         .item:hover + .dim, .dim:hover {
+         display: block;
+         transform: scale(1.08);
+         }
+         .footer {
+         display: flex;
+         align-items: center;
+         padding: 20px;
+         width: 100%;
+         text-align: center;
+         }
+         .footer p {
+         font-weight: 700;
+         font-size: 14px;
+         margin: auto;
+         color: #eee;
+         font-family: 'Poppins', sans-serif;
+         }
+         input {
+         border-radius: 10px;
+         padding: 15px;
+         border: 1px solid #D24335;
+         margin:10px;
+         outline: none;
+         }
+         input:focus {
+         border: 2px solid #D24335;
+         }
+         input:hover {
+         border: 2px solid #D24335;
+         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+         }
+         .btn {
+         background: #D24335;
+         color: #fff;
+         font-weight: 700;
+         border: 0;
+         border-radius: 20px;
+         outline: none;
+         padding: 10px;
+         padding-right: 25px;
+         padding-left: 25px;
+         cursor: pointer;
+         /*display: flex;*/
+         align-items: center;
+         justify-content: center;
+         }
+         .btn:hover {
+         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+         }
+         .index {
+         padding: 10px;
+         align-items: center;
+         width: 80%;
+         margin:auto;
+         display: flex;
+         flex-direction: column;
+         flex-wrap: wrap;
+         }
+         .container {
+         margin: auto;
+         padding: 15px;
+         width: 80%;
+         }
+      </style>
+      <script type="text/javascript" src="sweetalert2.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+   </head>
+   <body>
+      <h1>Admin Panel</h1>
+      <h2>Registered Users</h2>
+      <p style="color: #495450; font-size: 14px;">Hover on users to send them a msg!</p>
+      <br>
+      <ul>
+         <% for (var key in datas) { %>
+         <% console.log(datas[key].uid) %>
+         <li class="item"> 
+            <b>Uid:</b><%= datas[key].uid %>  <br> 
+            <b>Email:</b> <%= datas[key].email %> <br>
+            <b>EmailVerified:</b> <%= datas[key].emailVerified %> <br>
+            <b>CustomClaims:</b> <%= datas[key].customClaims %> <br>
+            <b>tokensValidAfterTime:</b> <%= datas[key].tokensValidAfterTime %> <br>
+            <b>disabled:</b> <%= datas[key].disabled %>
+         </li>
+         <button id="<%= datas[key].uid %>" onclick="sendmsg(this.id)" class="dim">Send GoldenMsg</button>
+         <% } %>
+      </ul>
+      <hr>
+      <h3>Navigations</h3>
+      <a href="/home">Back to home</a>
+      <br>
+      <a href="/user">Go to user page</a>
+      <br>
+      <br>
+   </body>
+   <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyDkB6cVahO5RWTdy7j_b8L47V8KFzQNPZ0",
+        authDomain: "abhiapp-33dbc.firebaseapp.com",
+        databaseURL: "https://abhiapp-33dbc-default-rtdb.firebaseio.com",
+        projectId: "abhiapp-33dbc",
+        storageBucket: "abhiapp-33dbc.appspot.com",
+        messagingSenderId: "502538835488",
+        appId: "1:502538835488:web:6c46e1b5e6356bc0968e45",
+        measurementId: "G-QZLL5VQKZ7"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      
+        
+   </script>
+   <script type="text/javascript" src="main.js"></script>
+</html>
