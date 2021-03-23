@@ -114,7 +114,7 @@ function signOut() {
         title: "Signed Out",
       }).then((value) => {
         setTimeout(function () {
-          window.location.replace("../index.html");
+          window.location.replace("/");
         }, 1000);
       });
     })
